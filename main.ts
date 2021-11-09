@@ -21,7 +21,7 @@ function tobbieTurn (speed: number) {
         pins.analogWritePin(AnalogPin.P15, pins.map(
         speed,
         0,
-        100,
+        -100,
         0,
         1023
         ))
@@ -49,7 +49,7 @@ function tobbieWalk (speed: number) {
         pins.analogWritePin(AnalogPin.P14, pins.map(
         speed,
         0,
-        100,
+        -100,
         0,
         1023
         ))
