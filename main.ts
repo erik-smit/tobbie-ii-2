@@ -32,8 +32,8 @@ function tobbieTurn (speed: number) {
 bluetooth.onUartDataReceived(serial.delimiters(Delimiters.NewLine), function () {
     rxData = bluetooth.uartReadUntil(serial.delimiters(Delimiters.NewLine))
     serial.writeLine(rxData)
-    rxString = _py.py_string_split(rxData, ",")
-rxFunction = rxString[0]
+    rxString = rxData.split(",")
+    rxFunction = rxString[0]
     if (rxFunction == "V") {
     	
     } else if (rxFunction == "S") {
@@ -73,9 +73,8 @@ let displayText = ""
 let turnSpeed = 0
 let walkSpeed = 0
 let rxFunction = ""
-let speeds: number[] = []
-let rxData = ""
 let rxString: string[] = []
+let rxData = ""
 basic.showIcon(IconNames.SmallDiamond)
 bluetooth.startButtonService()
 bluetooth.startIOPinService()
@@ -91,7 +90,7 @@ basic.forever(function () {
     if (prevDisplayText != displayText) {
         prevDisplayText = displayText
         basic.clearScreen()
-        basic.showString(displayText)
+        basic.showString("" + (displayText))
         basic.pause(500)
     }
 })
